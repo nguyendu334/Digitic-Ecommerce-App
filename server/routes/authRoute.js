@@ -10,6 +10,7 @@ const {
     blockUser,
     unBlockUser,
     handleRefreshToken,
+    logoutUser,
 } = require('../controllers/userCtrl');
 const { authMiddleware, isAdmin } = require('../middlewares/authMiddleware');
 
@@ -38,6 +39,9 @@ router.put('/block-user/:id', authMiddleware, isAdmin, blockUser);
 router.put('/unblock-user/:id', authMiddleware, isAdmin, unBlockUser);
 
 // refresh token
-router.get('/refresh', handleRefreshToken);
+router.post('/refresh', handleRefreshToken);
+
+// logout
+router.post('/logout', logoutUser)
 
 module.exports = router;
