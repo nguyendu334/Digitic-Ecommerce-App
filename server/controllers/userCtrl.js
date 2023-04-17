@@ -25,7 +25,7 @@ const loginUser = asyncHandler(async (req, res) => {
     const findUser = await User.findOne({ email });
     if (findUser && (await findUser.isPasswordMatched(password))) {
         const refreshToken = await generateRefreshToken(findUser?._id);
-        const updateuser = await User.findByIdAndUpdate(
+        const updateUser = await User.findByIdAndUpdate(
             findUser.id,
             {
                 refreshToken: refreshToken,
@@ -178,6 +178,22 @@ const unBlockUser = asyncHandler(async (req, res) => {
     }
 });
 
+// update password
+const updatePassword = asyncHandler(async (req, res) => {
+    const { _id } = req.user;
+    const {password} = req.body;
+    validateMongoDbId(_id);
+    const user = await User.findById( _id);
+    if (password) {
+        user.password = password;
+        const updatePassword = await user.save();
+        res.json(updatePassword);
+    } else {
+        res.json(user);
+        throw new Error('Please enter password');
+    }
+});
+
 module.exports = {
     registerUser,
     loginUser,
@@ -189,4 +205,5 @@ module.exports = {
     unBlockUser,
     handleRefreshToken,
     logoutUser,
+    updatePassword,
 };
