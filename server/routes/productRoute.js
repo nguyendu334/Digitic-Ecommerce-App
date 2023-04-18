@@ -5,6 +5,7 @@ const {
     getaProducts,
     getAllProducts,
     deleteProduct,
+    addToWishlist,
 } = require('../controllers/productCtrl');
 const { authMiddleware, isAdmin } = require('../middlewares/authMiddleware');
 
@@ -12,6 +13,9 @@ const router = express.Router();
 
 // Create product
 router.post('/create-product', authMiddleware, isAdmin, createProduct);
+
+// add to wishlist
+router.put('/wishlist', authMiddleware, addToWishlist);
 
 // Update product
 router.put('/:id', authMiddleware, isAdmin, updateProduct);
