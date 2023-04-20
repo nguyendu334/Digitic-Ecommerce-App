@@ -17,15 +17,43 @@ const {
     resetPassword,
     getWishlist,
     saveAddress,
+    userCart,
+    getUserCart,
+    emptyCart,
+    applyCoupon,
+    createOrder,
+    getOrder,
+    updateOrderStatus,
 } = require('../controllers/userCtrl');
 const { authMiddleware, isAdmin } = require('../middlewares/authMiddleware');
 
 // Register user
 router.post('/register', registerUser);
 
-// Login user
+// Login
 router.post('/login', loginUser);
 router.post('/admin-login', loginAdmin);
+
+// user add to cart
+router.post('/cart', authMiddleware, userCart);
+
+// get user cart
+router.get('/cart', authMiddleware, getUserCart);
+
+// delete user cart
+router.delete('/empty-cart', authMiddleware, emptyCart);
+
+// apply coupon
+router.post('/cart/apply-coupon', authMiddleware, applyCoupon);
+
+// create order
+router.post('/cart/cash-order', authMiddleware, createOrder);
+
+// get orders
+router.get('/get-orders', authMiddleware, getOrder);
+
+// update order status
+router.put('/order/update-order/:id', authMiddleware, isAdmin, updateOrderStatus);
 
 // Update user
 router.put('/edit-user', authMiddleware, updateUser);
