@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BsLinkedin, BsGithub, BsYoutube, BsInstagram } from 'react-icons/bs';
+import '../../styles/FooterStyles.css';
 
 const Footer = () => {
     return (
@@ -43,26 +44,26 @@ const Footer = () => {
                                 <address className="text-white py-2">
                                     Address: 1234 Heaven Stress, Beverly Hill, Melbourne, USA.
                                 </address>
-                                <a href="tel:098 9831 609" className="d-block mb-1 text-white">
+                                <Link to="tel:098 9831 609" className="d-block mb-1 text-white">
                                     Phone: 098 9831 609
-                                </a>
-                                <a
-                                    href="mailto:nguyendu334@gmail.com"
+                                </Link>
+                                <Link
+                                    to="mailto:nguyendu334@gmail.com"
                                     className="mt-3 d-block mb-1 text-white"
                                 >
                                     Email: nguyendu334@gmail.com
-                                </a>
+                                </Link>
                                 <div className="social-icons d-flex align-items-center gap-30 mt-4">
-                                    <Link className="text-white" href="">
+                                    <Link className="text-white" to="">
                                         <BsLinkedin className="fs-4" />
                                     </Link>
-                                    <Link className="text-white" href="">
+                                    <Link className="text-white" to="">
                                         <BsGithub className="fs-4" />
                                     </Link>
-                                    <Link className="text-white" href="">
+                                    <Link className="text-white" to="">
                                         <BsInstagram className="fs-4" />
                                     </Link>
-                                    <Link className="text-white" href="">
+                                    <Link className="text-white" to="">
                                         <BsYoutube className="fs-4" />
                                     </Link>
                                 </div>
