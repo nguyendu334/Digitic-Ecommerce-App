@@ -77,6 +77,10 @@
     cursor: pointer;
 }
 
+.grid img:hover {
+    background-color: var(--color-febd69);
+}
+
 .gr-12 {
     width: 100%;
 }
@@ -102,7 +106,6 @@
     width: 270px;
 }
 
-
 .gr-12 .action-bar {
     top: 17%;
 }
@@ -119,4 +122,3 @@
     margin: auto;
     display: block;
 }
-
