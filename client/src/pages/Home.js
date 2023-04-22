@@ -228,6 +228,56 @@ const Home = () => {
                 </div>
             </section>
 
+            <section className="famous-wrapper py-5 home-wrapper-2">
+                <div className="container-xxl">
+                    <div className="row">
+                        <div className="col-3">
+                            <div className="famous-card position-relative">
+                                <img src="images/famous-test.png" className="img-fluid" alt="famous" />
+                                <div className="famous-content position-absolute">
+                                    <h5 className='text-white'>Big Screen</h5>
+                                    <h6 className='text-white'>Smart Watch Series</h6>
+                                    <p className='text-white'>From $399 or $16.62/mo. for 24 mo</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="col-3">
+                            <div className="famous-card position-relative">
+                                <img src="images/famous-test2.png" className='img-fluid' alt="famous" />
+                                <div className="famous-content position-absolute">
+                                    <h5>Studio Display</h5>
+                                    <h6>600 nits of brightness</h6>
+                                    <p>27-inch 5k Retina display</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="col-3">
+                            <div className="famous-card position-relative">
+                                <img src="images/famous-test3.png" className='img-fluid' alt="famous" />
+                                <div className="famous-content position-absolute">
+                                    <h5>Smart Phones</h5>
+                                    <h6>iPhone 13 Pro</h6>
+                                    <p>Now in Green, From $999 or $41.62/mo. for 24 mo</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="col-3">
+                            <div className="famous-card position-relative">
+                                <img src="images/famous-test4.png" className='img-fluid' alt="famous" />
+                                <div className="famous-content position-absolute">
+                                    <h5>Home Speakers</h5>
+                                    <h6>Room-filling sound</h6>
+                                    <p>From $699 or $116.58/mo. for 12 mo</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section className="special-wrapper py-5 home-wrapper-2">
                 <div className="container-xxl">
                     <div className="row">
@@ -251,7 +301,6 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="row">
-                        
                         <ProductCard />
                         <ProductCard />
                         <ProductCard />
