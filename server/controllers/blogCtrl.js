@@ -2,7 +2,7 @@ const Blog = require('../models/blogModel');
 const User = require('../models/userModel');
 const asyncHandler = require('express-async-handler');
 const validateMongoDbId = require('../utils/validateMongodbId');
-const uploadImg = require('../utils/cloudinary');
+const { uploadImg } = require('../utils/cloudinary');
 const fs = require('fs');
 
 // Create blog
