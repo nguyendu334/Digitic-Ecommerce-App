@@ -53,31 +53,43 @@ const Header = () => {
                         <div className="col-5">
                             <div className="header-upper-links d-flex align-items-center justify-content-between">
                                 <div>
-                                    <Link className="d-flex align-items-center gap-10 text-white">
+                                    <NavLink
+                                        to="/compare-product"
+                                        className="d-flex align-items-center gap-10 text-white menu-item"
+                                    >
                                         <img src="images/compare.svg" alt="compare" />
                                         <p className="mb-0" style={{ fontSize: '14px' }}>
                                             Compare <br /> Products
                                         </p>
-                                    </Link>
+                                    </NavLink>
                                 </div>
                                 <div>
-                                    <Link className="d-flex align-items-center gap-10 text-white">
+                                    <NavLink
+                                        to="/wishlist"
+                                        className="d-flex align-items-center gap-10 text-white menu-item"
+                                    >
                                         <img src="images/wishlist.svg" alt="wishlist" />
                                         <p className="mb-0" style={{ fontSize: '14px' }}>
                                             Favourite <br /> Wishlist
                                         </p>
-                                    </Link>
+                                    </NavLink>
                                 </div>
                                 <div>
-                                    <Link className="d-flex align-items-center gap-10 text-white">
+                                    <NavLink
+                                        to="/login"
+                                        className="d-flex align-items-center gap-10 text-white menu-item"
+                                    >
                                         <img src="images/user.svg" alt="user" />
                                         <p className="mb-0" style={{ fontSize: '14px' }}>
                                             Login <br /> My Account
                                         </p>
-                                    </Link>
+                                    </NavLink>
                                 </div>
                                 <div>
-                                    <Link className="d-flex align-items-center gap-10 text-white">
+                                    <NavLink
+                                        to="/cart"
+                                        className="d-flex align-items-center gap-10 text-white "
+                                    >
                                         <img src="images/cart.svg" alt="cart" />
                                         <div
                                             className="d-flex flex-column gap-10"
@@ -86,7 +98,7 @@ const Header = () => {
                                             <span className="badge bg-white text-dark">0</span>
                                             <p className="mb-0">$ 500</p>
                                         </div>
-                                    </Link>
+                                    </NavLink>
                                 </div>
                             </div>
                         </div>

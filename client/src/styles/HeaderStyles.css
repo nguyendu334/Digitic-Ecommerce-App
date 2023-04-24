@@ -65,3 +65,11 @@
     color: var(--color-febd69) !important;
     border-bottom: 1px solid var(--color-febd69);
 }
+
+.header-upper-links .menu-item:hover {
+    color: var(--color-febd69) !important;
+}
+
+.header-upper-links .menu-item.active {
+    color: var(--color-febd69) !important;
+}

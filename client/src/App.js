@@ -8,6 +8,7 @@ import Contact from './pages/Contact';
 import OurStore from './pages/OurStore';
 import Blog from './pages/Blog';
 import PageNotFound from './pages/PageNotFound';
+import CompareProduct from './pages/CompareProduct';
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                         <Route path="/blog" element={<Blog />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/about" element={<About />} />
+                        <Route path="/compare-product" element={<CompareProduct />} />
                         <Route path="*" element={<PageNotFound />} />
                     </Route>
                 </Routes>
