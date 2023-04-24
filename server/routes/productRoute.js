@@ -8,6 +8,7 @@ const {
     addToWishlist,
     rating,
     uploadImage,
+    deleteImage,
 } = require('../controllers/productCtrl');
 const { authMiddleware, isAdmin } = require('../middlewares/authMiddleware');
 const { uploadPhotoProduct, productImgResize } = require('../middlewares/uploadImages');
@@ -19,7 +20,7 @@ router.post('/create-product', authMiddleware, isAdmin, createProduct);
 
 // upload img
 router.put(
-    '/upload/:id',
+    '/upload/',
     authMiddleware,
     isAdmin,
     uploadPhotoProduct.array('images', 10),
@@ -38,6 +39,9 @@ router.put('/:id', authMiddleware, isAdmin, updateProduct);
 
 // Delete product
 router.delete('/:id', authMiddleware, isAdmin, deleteProduct);
+
+// delete img
+router.delete('/delete-image/:id', authMiddleware, isAdmin, deleteImage);
 
 // get single product
 router.get('/:id', getaProducts);
