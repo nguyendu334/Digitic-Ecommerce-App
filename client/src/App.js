@@ -5,21 +5,21 @@ import Layout from './components/Layout/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import OurStore from './pages/OurStore';
-import Blog from './pages/Blog';
-import SingleBlog from './pages/SingleBlog';
+import OurStore from './pages/Products/OurStore';
+import Blog from './pages/Blogs/Blog';
+import SingleBlog from './pages/Blogs/SingleBlog';
 import PageNotFound from './pages/PageNotFound';
-import CompareProduct from './pages/CompareProduct';
+import CompareProduct from './pages/Products/CompareProduct';
 import Wishlist from './pages/Wishlist';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
 import ForgotPassword from './pages/Auth/ForgotPassword';
 import ResetPassword from './pages/Auth/ResetPassword';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import RefundPolicy from './pages/RefundPolicy';
-import ShippingPolicy from './pages/ShippingPolicy';
-import TermAndContions from './pages/TermAndContions';
-import SingleProduct from './pages/SingleProduct';
+import PrivacyPolicy from './pages/Policy/PrivacyPolicy';
+import RefundPolicy from './pages/Policy/RefundPolicy';
+import ShippingPolicy from './pages/Policy/ShippingPolicy';
+import TermAndContions from './pages/Policy/TermAndContions';
+import SingleProduct from './pages/Products/SingleProduct';
 
 function App() {
     return (

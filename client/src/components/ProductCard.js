@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactStars from 'react-rating-stars-component';
 import { Link, useLocation } from 'react-router-dom';
-import '../styles/ProductCardStyles.css';
+import '../styles/Products/ProductCardStyles.css';
 
 import prodcompare from '../images/prodcompare.svg';
 import wish from '../images/wish.svg';

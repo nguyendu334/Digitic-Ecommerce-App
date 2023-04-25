@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import ReactStars from 'react-rating-stars-component';
-import BreadCrumb from '../components/BreadCrumb';
-import Meta from '../components/Meta';
-import '../styles/OurStorePageStyles.css';
-import ProductCard from './../components/ProductCard';
-import Color from '../components/Color';
+import BreadCrumb from '../../components/BreadCrumb';
+import Meta from '../../components/Meta';
+import '../../styles/Products/OurStorePageStyles.css';
+import ProductCard from '../../components/ProductCard';
+import Color from '../../components/Color';
 
 const OurStore = () => {
     const [grid, setGrid] = useState(4);

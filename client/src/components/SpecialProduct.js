@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactStars from 'react-rating-stars-component';
-import '../styles/SpecialProductStyles.css';
+import '../styles/Products/SpecialProductStyles.css';
 import { Link } from 'react-router-dom';
 
 import watch from '../images/watch.jpg';

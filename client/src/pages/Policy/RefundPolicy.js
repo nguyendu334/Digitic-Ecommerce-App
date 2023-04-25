@@ -1,6 +1,7 @@
 import React from 'react';
-import BreadCrumb from '../components/BreadCrumb';
-import Meta from '../components/Meta';
+import BreadCrumb from '../../components/BreadCrumb';
+import Meta from '../../components/Meta';
+import '../../styles/Policy/PolicyStyles.css';
 
 const RefundPolicy = () => {
     return (

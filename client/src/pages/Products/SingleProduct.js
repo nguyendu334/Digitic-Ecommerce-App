@@ -3,11 +3,11 @@ import { TbGitCompare } from 'react-icons/tb';
 import { AiOutlineHeart } from 'react-icons/ai';
 import ReactStars from 'react-rating-stars-component';
 import ReactImageZoom from 'react-image-zoom';
-import BreadCrumb from '../components/BreadCrumb';
-import Meta from '../components/Meta';
-import ProductCard from '../components/ProductCard';
-import '../styles/Products/SingleProductPageStyles.css';
-import Color from './../components/Color';
+import BreadCrumb from '../../components/BreadCrumb';
+import Meta from '../../components/Meta';
+import ProductCard from '../../components/ProductCard';
+import Color from '../../components/Color';
+import '../../styles/Products/SingleProductPageStyles.css';
 
 const SingleProduct = () => {
     const props = {
@@ -177,8 +177,8 @@ const SingleProduct = () => {
                                     <div className="d-flex gap-10 flex-column my-2">
                                         <h3 className="product-heading">Shipping & Returns</h3>
                                         <p className="product-data">
-                                            Free shipping and returns available on all orders!<br/> We
-                                            ship all us domestic orders within
+                                            Free shipping and returns available on all orders!
+                                            <br /> We ship all us domestic orders within
                                             <b> 5-10 business days!</b>
                                         </p>
                                     </div>

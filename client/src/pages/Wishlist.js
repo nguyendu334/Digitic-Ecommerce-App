@@ -1,7 +1,7 @@
 import React from 'react';
 import BreadCrumb from '../components/BreadCrumb';
 import Meta from '../components/Meta';
-import '../styles/CompareProductPageStyles.css';
+import '../styles/Products/CompareProductPageStyles.css';
 
 const Wishlist = () => {
     return (

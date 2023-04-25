@@ -1,11 +1,11 @@
 import React from 'react';
-import { HiOutlineArrowLeft } from 'react-icons/hi';
-import BreadCrumb from '../components/BreadCrumb';
-import Meta from '../components/Meta';
-import '../styles/Blogs/SingleBlogPageStyles.css';
 import { Link } from 'react-router-dom';
+import { HiOutlineArrowLeft } from 'react-icons/hi';
+import '../../styles/Blogs/SingleBlogPageStyles.css';
+import BreadCrumb from '../../components/BreadCrumb';
+import Meta from '../../components/Meta';
 
-import blog1 from '../images/blog-1.jpg';
+import blog1 from '../../images/blog-1.jpg';
 
 const SingleBlog = () => {
     return (
