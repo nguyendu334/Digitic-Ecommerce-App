@@ -7,6 +7,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import OurStore from './pages/OurStore';
 import Blog from './pages/Blog';
+import SingleBlog from './pages/SingleBlog';
 import PageNotFound from './pages/PageNotFound';
 import CompareProduct from './pages/CompareProduct';
 import Wishlist from './pages/Wishlist';
@@ -22,16 +23,17 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Home />} />
-                        <Route path="/store" element={<OurStore />} />
-                        <Route path="/blog" element={<Blog />} />
-                        <Route path="/contact" element={<Contact />} />
-                        <Route path="/about" element={<About />} />
-                        <Route path="/compare-product" element={<CompareProduct />} />
-                        <Route path="/wishlist" element={<Wishlist />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/register" element={<Register />} />
-                        <Route path="/forgot-password" element={<ForgotPassword />} />
-                        <Route path="/reset-password" element={<ResetPassword />} />
+                        <Route path="store" element={<OurStore />} />
+                        <Route path="blogs" element={<Blog />} />
+                        <Route path="blog/:id/" element={<SingleBlog />} />
+                        <Route path="contact" element={<Contact />} />
+                        <Route path="about" element={<About />} />
+                        <Route path="compare-product" element={<CompareProduct />} />
+                        <Route path="wishlist" element={<Wishlist />} />
+                        <Route path="login" element={<Login />} />
+                        <Route path="register" element={<Register />} />
+                        <Route path="forgot-password" element={<ForgotPassword />} />
+                        <Route path="reset-password" element={<ResetPassword />} />
                         <Route path="*" element={<PageNotFound />} />
                     </Route>
                 </Routes>
