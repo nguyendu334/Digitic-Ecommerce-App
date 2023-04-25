@@ -4,6 +4,9 @@ import Meta from '../components/Meta';
 import '../styles/CompareProductPageStyles.css';
 import Color from '../components/Color';
 
+import cross from '../images/cross.svg';
+import watch from '../images/watch.jpg';
+
 const CompareProduct = () => {
     return (
         <>
@@ -15,12 +18,12 @@ const CompareProduct = () => {
                         <div className="col-3">
                             <div className="compare-product-card position-relative">
                                 <img
-                                    src="images/cross.svg"
+                                    src={cross}
                                     alt="cross"
                                     className="position-absolute cross img-fluid"
                                 />
                                 <div className="product-card-image">
-                                    <img src="images/watch.jpg" className='img-fluid w-100' alt="watch" />
+                                    <img src={watch} className='img-fluid w-100' alt="watch" />
                                 </div>
                                 <div className="compare-product-details py-3">
                                     <h5 className="title">
@@ -63,12 +66,12 @@ const CompareProduct = () => {
                         <div className="col-3">
                             <div className="compare-product-card position-relative">
                                 <img
-                                    src="images/cross.svg"
+                                    src={cross}
                                     alt="cross"
                                     className="position-absolute cross img-fluid"
                                 />
                                 <div className="product-card-image">
-                                    <img src="images/watch.jpg" className='img-fluid w-100' alt="watch" />
+                                    <img src={watch} className='img-fluid w-100' alt="watch" />
                                 </div>
                                 <div className="compare-product-details py-3">
                                     <h5 className="title">

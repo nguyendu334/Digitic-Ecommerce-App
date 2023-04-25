@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { BsLinkedin, BsGithub, BsYoutube, BsInstagram } from 'react-icons/bs';
 import '../../styles/FooterStyles.css';
 
+import newsletter from '../../images/newsletter.png';
+
 const Footer = () => {
     return (
         <>
@@ -11,7 +13,7 @@ const Footer = () => {
                     <div className="row align-items-center">
                         <div className="col-5">
                             <div className="footer-top-data d-flex gap-15 align-align-items-center">
-                                <img src="images/newsletter.png" alt="newsletter" />
+                                <img src={newsletter} alt="newsletter" />
                                 <h2 className="mb-0 text-white" style={{ fontSize: '24px' }}>
                                     Sign Up for NewsLetter
                                 </h2>
