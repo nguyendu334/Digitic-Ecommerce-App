@@ -19,6 +19,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import RefundPolicy from './pages/RefundPolicy';
 import ShippingPolicy from './pages/ShippingPolicy';
 import TermAndContions from './pages/TermAndContions';
+import SingleProduct from './pages/SingleProduct';
 
 function App() {
     return (
@@ -27,7 +28,8 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Home />} />
-                        <Route path="store" element={<OurStore />} />
+                        <Route path="product" element={<OurStore />} />
+                        <Route path="product/:id" element={<SingleProduct />} />
                         <Route path="blogs" element={<Blog />} />
                         <Route path="blog/:id/" element={<SingleBlog />} />
                         <Route path="contact" element={<Contact />} />
