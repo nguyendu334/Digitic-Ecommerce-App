@@ -117,7 +117,6 @@
 
 .famous-card img {
     border-radius: 10px;
-    height: 450px;
 }
 
 .famous-content h5 {
@@ -138,7 +137,7 @@
 .famous-content p {
     font-size: 16px;
     line-height: 24px;
-    font-weight: 100;
+    font-weight: 400;
 }
 /* Famous card end */
 /* Homepage end here */

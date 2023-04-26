@@ -119,7 +119,7 @@ const Home = () => {
                 <div className="row">
                     <div className="col-12">
                         <div className="categories d-flex justify-content-between flex-wrap align-items-center">
-                            <div className="d-flex gap align-items-center">
+                            <div className="d-flex gap-30 align-items-center">
                                 <div>
                                     <h6>Music & Gaming</h6>
                                     <p>10 Items</p>
@@ -127,7 +127,7 @@ const Home = () => {
                                 <img src="images/camera.jpg" alt="camera" />
                             </div>
 
-                            <div className="d-flex gap align-items-center">
+                            <div className="d-flex gap-30 align-items-center">
                                 <div>
                                     <h6>Cameras</h6>
                                     <p>10 Items</p>
@@ -135,7 +135,7 @@ const Home = () => {
                                 <img src="images/camera.jpg" alt="camera" />
                             </div>
 
-                            <div className="d-flex gap align-items-center">
+                            <div className="d-flex gap-30 align-items-center">
                                 <div>
                                     <h6>Smart TV</h6>
                                     <p>10 Items</p>
@@ -143,7 +143,7 @@ const Home = () => {
                                 <img src="images/tv.jpg" alt="smart tv" />
                             </div>
 
-                            <div className="d-flex gap align-items-center">
+                            <div className="d-flex gap-30 align-items-center">
                                 <div>
                                     <h6>Smart Watché</h6>
                                     <p>10 Items</p>
@@ -151,7 +151,7 @@ const Home = () => {
                                 <img src="images/headphone.jpg" alt="smart watch" />
                             </div>
 
-                            <div className="d-flex gap align-items-center">
+                            <div className="d-flex gap-30 align-items-center">
                                 <div>
                                     <h6>Music & Gaming</h6>
                                     <p>10 Items</p>
@@ -159,7 +159,7 @@ const Home = () => {
                                 <img src="images/camera.jpg" alt="camera" />
                             </div>
 
-                            <div className="d-flex gap align-items-center">
+                            <div className="d-flex gap-30 align-items-center">
                                 <div>
                                     <h6>Cameras</h6>
                                     <p>10 Items</p>
@@ -167,7 +167,7 @@ const Home = () => {
                                 <img src="images/camera.jpg" alt="camera" />
                             </div>
 
-                            <div className="d-flex gap align-items-center">
+                            <div className="d-flex gap-30 align-items-center">
                                 <div>
                                     <h6>Smart TV</h6>
                                     <p>10 Items</p>
@@ -175,7 +175,7 @@ const Home = () => {
                                 <img src="images/tv.jpg" alt="smart tv" />
                             </div>
 
-                            <div className="d-flex gap align-items-center">
+                            <div className="d-flex gap-30 align-items-center">
                                 <div>
                                     <h6>Smart Watché</h6>
                                     <p>10 Items</p>
@@ -203,7 +203,7 @@ const Home = () => {
                 <div className="row">
                     <div className="col-3">
                         <div className="famous-card position-relative">
-                            <img src="images/famous-test.png" className="img-fluid" alt="famous" />
+                            <img src="images/famous-1.webp" className="img-fluid" alt="famous" />
                             <div className="famous-content position-absolute">
                                 <h5 className="text-white">Big Screen</h5>
                                 <h6 className="text-white">Smart Watch Series</h6>
@@ -214,7 +214,7 @@ const Home = () => {
 
                     <div className="col-3">
                         <div className="famous-card position-relative">
-                            <img src="images/famous-test2.png" className="img-fluid" alt="famous" />
+                            <img src="images/famous-2.webp" className="img-fluid" alt="famous" />
                             <div className="famous-content position-absolute">
                                 <h5>Studio Display</h5>
                                 <h6>600 nits of brightness</h6>
@@ -225,7 +225,7 @@ const Home = () => {
 
                     <div className="col-3">
                         <div className="famous-card position-relative">
-                            <img src="images/famous-test3.png" className="img-fluid" alt="famous" />
+                            <img src="images/famous-3.webp" className="img-fluid" alt="famous" />
                             <div className="famous-content position-absolute">
                                 <h5>Smart Phones</h5>
                                 <h6>iPhone 13 Pro</h6>
@@ -236,7 +236,7 @@ const Home = () => {
 
                     <div className="col-3">
                         <div className="famous-card position-relative">
-                            <img src="images/famous-test4.png" className="img-fluid" alt="famous" />
+                            <img src="images/famous-3.webp" className="img-fluid" alt="famous" />
                             <div className="famous-content position-absolute">
                                 <h5>Home Speakers</h5>
                                 <h6>Room-filling sound</h6>

@@ -6,7 +6,7 @@ import '../styles/Products/ProductCardStyles.css';
 import prodcompare from '../images/prodcompare.svg';
 import wish from '../images/wish.svg';
 import watch from '../images/watch.jpg';
-import tab from '../images/tab.jpg';
+import watch2 from '../images/watch-2.avif';
 import addcart from '../images/add-cart.svg';
 import view from '../images/view.svg';
 
@@ -16,7 +16,7 @@ const ProductCard = (props) => {
     return (
         <>
             <div className={`${location.pathname === '/store' ? `gr-${grid}` : 'col-3'}`}>
-                <Link to=":id" className="product-card position-relative">
+                <Link to="/product/:id" className="product-card position-relative">
                     <div className="wishlist-icon position-absolute">
                         <button className='border-0 bg-transparent'>
                             <img src={wish} alt="wishlist" />
@@ -25,7 +25,7 @@ const ProductCard = (props) => {
 
                     <div className="product-image">
                         <img src={watch} className="img-fluid" alt="product" />
-                        <img src={tab} className="img-fluid" alt="product" />
+                        <img src={watch2} className="img-fluid" alt="product" />
                     </div>
 
                     <div className="product-details">
@@ -75,7 +75,7 @@ const ProductCard = (props) => {
 
                     <div className="product-image">
                         <img src={watch} className="img-fluid" alt="product" />
-                        <img src={tab} className="img-fluid" alt="product" />
+                        <img src={watch2} className="img-fluid" alt="product" />
                     </div>
 
                     <div className="product-details">
