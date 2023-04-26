@@ -21,6 +21,7 @@ import ShippingPolicy from './pages/Policy/ShippingPolicy';
 import TermAndContions from './pages/Policy/TermAndContions';
 import SingleProduct from './pages/Products/SingleProduct';
 import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
 
 function App() {
     return (
@@ -34,6 +35,7 @@ function App() {
                         <Route path="blogs" element={<Blog />} />
                         <Route path="blog/:id/" element={<SingleBlog />} />
                         <Route path="cart" element={<Cart />} />
+                        <Route path="checkout" element={<Checkout />} />
                         <Route path="contact" element={<Contact />} />
                         <Route path="about" element={<About />} />
                         <Route path="compare-product" element={<CompareProduct />} />
