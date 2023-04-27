@@ -70,7 +70,7 @@ const MainLayout = () => {
                                 },
                                 {
                                     key: 'product-list',
-                                    icon: <SiBrandfolder className="fs-4" />,
+                                    icon: <AiOutlineShoppingCart className="fs-4" />,
                                     label: 'Product List',
                                 },
                                 {
