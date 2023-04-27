@@ -123,7 +123,7 @@ const MainLayout = () => {
                                 {
                                     key: 'blog-list',
                                     icon: <FaClipboardList className="fs-4" />,
-                                    label: 'Add Blog List',
+                                    label: 'Blog List',
                                 },
                                 {
                                     key: 'blog-category',

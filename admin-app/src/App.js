@@ -6,6 +6,7 @@ import ResetPassword from './pages/ResetPassword';
 import ForgotPassword from './pages/ForgotPassword';
 import MainLayout from './components/MainLayout';
 import Enquiries from './pages/Enquiries';
+import Bloglist from './pages/Bloglist';
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                 <Route path="/admin" element={<MainLayout />}>
                     <Route index element={<Dashboard />} />
                     <Route path="enquiries" element={<Enquiries />} />
+                    <Route path="blog-list" element={<Bloglist />} />
                 </Route>
             </Routes>
         </Router>
