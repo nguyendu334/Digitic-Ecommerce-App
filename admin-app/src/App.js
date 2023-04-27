@@ -8,6 +8,7 @@ import MainLayout from './components/MainLayout';
 import Enquiries from './pages/Enquiries';
 import Bloglist from './pages/Bloglist';
 import BlogCategoryList from './pages/BlogCategoryList';
+import Orders from './pages/Orders';
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                     <Route path="enquiries" element={<Enquiries />} />
                     <Route path="blog-list" element={<Bloglist />} />
                     <Route path="blog-category-list" element={<BlogCategoryList />} />
+                    <Route path="orders" element={<Orders />} />
                 </Route>
             </Routes>
         </Router>
