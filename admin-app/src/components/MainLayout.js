@@ -8,6 +8,7 @@ import {
     AiOutlineOrderedList,
     AiOutlinePicLeft,
     AiOutlinePicRight,
+    AiOutlinePullRequest,
 } from 'react-icons/ai';
 import { SiBrandfolder } from 'react-icons/si';
 import { BiCategory } from 'react-icons/bi';
@@ -138,7 +139,7 @@ const MainLayout = () => {
                         },
                         {
                             key: 'enquiries',
-                            icon: <AiOutlineDashboard className="fs-4" />,
+                            icon: <AiOutlinePullRequest className="fs-4" />,
                             label: 'Enquiries',
                         },
                     ]}
