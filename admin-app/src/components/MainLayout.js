@@ -12,9 +12,9 @@ const { Header, Sider, Content } = Layout;
 
 const MainLayout = () => {
     const [collapsed, setCollapsed] = useState(false);
-    const {
-        token: { colorBgContainer },
-      } = theme.useToken();
+      const {
+    token: { colorBgContainer },
+  } = theme.useToken();
     return (
         <Layout>
             <Sider trigger={null} collapsible collapsed={collapsed}>
