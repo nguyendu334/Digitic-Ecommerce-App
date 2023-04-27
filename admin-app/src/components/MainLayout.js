@@ -79,7 +79,7 @@ const MainLayout = () => {
                                     label: 'Brand',
                                 },
                                 {
-                                    key: 'list-brand',
+                                    key: 'brand-list',
                                     icon: <SiBrandfolder className="fs-4" />,
                                     label: 'List Brand',
                                 },
@@ -99,7 +99,7 @@ const MainLayout = () => {
                                     label: 'Color',
                                 },
                                 {
-                                    key: 'list-color',
+                                    key: 'color-list',
                                     icon: <AiOutlineBgColors className="fs-4" />,
                                     label: 'List Color',
                                 },
