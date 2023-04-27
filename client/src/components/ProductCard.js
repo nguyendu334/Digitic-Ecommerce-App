@@ -15,10 +15,19 @@ const ProductCard = (props) => {
     let location = useLocation();
     return (
         <>
-            <div className={`${location.pathname === '/store' ? `gr-${grid}` : 'col-3'}`}>
-                <Link to="/product/:id" className="product-card position-relative">
+            <div className={`${location.pathname === '/product' ? `gr-${grid}` : 'col-3'}`}>
+                <Link
+                    to={`${
+                        location.pathname === '/'
+                            ? 'product/:id'
+                            : location.pathname === '/product/:id'
+                            ? '/product/:id'
+                            : ':id'
+                    }`}
+                    className="product-card position-relative"
+                >
                     <div className="wishlist-icon position-absolute">
-                        <button className='border-0 bg-transparent'>
+                        <button className="border-0 bg-transparent">
                             <img src={wish} alt="wishlist" />
                         </button>
                     </div>
@@ -51,13 +60,13 @@ const ProductCard = (props) => {
 
                     <div className="action-bar position-absolute">
                         <div className="d-flex flex-column gap-15">
-                            <button className='border-0 bg-transparent'>
+                            <button className="border-0 bg-transparent">
                                 <img src={prodcompare} alt="compare" />
                             </button>
-                            <button className='border-0 bg-transparent'>
+                            <button className="border-0 bg-transparent">
                                 <img src={view} alt="view" />
                             </button>
-                            <button className='border-0 bg-transparent'>
+                            <button className="border-0 bg-transparent">
                                 <img src={addcart} alt="addcart" />
                             </button>
                         </div>
@@ -65,10 +74,19 @@ const ProductCard = (props) => {
                 </Link>
             </div>
 
-            <div className={`${location.pathname === '/store' ? `gr-${grid}` : 'col-3'}`}>
-                <Link className="product-card position-relative">
+            <div className={`${location.pathname === '/product' ? `gr-${grid}` : 'col-3'}`}>
+                <Link
+                    to={`${
+                        location.pathname === '/'
+                            ? 'product/:id'
+                            : location.pathname === '/product/:id'
+                            ? '/product/:id'
+                            : ':id'
+                    }`}
+                    className="product-card position-relative"
+                >
                     <div className="wishlist-icon position-absolute">
-                        <button className='border-0 bg-transparent'>
+                        <button className="border-0 bg-transparent">
                             <img src={wish} alt="wishlist" />
                         </button>
                     </div>
@@ -101,13 +119,13 @@ const ProductCard = (props) => {
 
                     <div className="action-bar position-absolute">
                         <div className="d-flex flex-column gap-15">
-                            <button className='border-0 bg-transparent'>
+                            <button className="border-0 bg-transparent">
                                 <img src={prodcompare} alt="compare" />
                             </button>
-                            <button className='border-0 bg-transparent'>
+                            <button className="border-0 bg-transparent">
                                 <img src={view} alt="view" />
                             </button>
-                            <button className='border-0 bg-transparent'>
+                            <button className="border-0 bg-transparent">
                                 <img src={addcart} alt="addcart" />
                             </button>
                         </div>

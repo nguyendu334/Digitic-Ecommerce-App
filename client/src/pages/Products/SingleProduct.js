@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import { TbGitCompare } from 'react-icons/tb';
 import { AiOutlineHeart } from 'react-icons/ai';
@@ -17,6 +18,7 @@ const SingleProduct = () => {
         zoomWidth: 600,
         img: 'https://cdn.dribbble.com/users/2400293/screenshots/19766354/media/f00ba86ba0c81e959f855126e2d6a8ba.png?compress=1&resize=1000x750&vertical=top',
     };
+    // eslint-disable-next-line no-unused-vars
     const [orderedProduct, setOrderedProduct] = useState(true);
 
     const copyToClipboard = (text) => {
@@ -186,6 +188,7 @@ const SingleProduct = () => {
                                 <div className="d-flex gap-10 align-items-center my-3">
                                     <h3 className="product-heading">Product Link</h3>
                                     <a
+                                        // eslint-disable-next-line no-script-url
                                         href="javascript:void(0);"
                                         onClick={() => {
                                             copyToClipboard(

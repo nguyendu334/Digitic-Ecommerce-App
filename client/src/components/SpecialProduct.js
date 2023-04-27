@@ -31,10 +31,27 @@ const SpecialProduct = () => {
                             <p className="mb-0">
                                 <b>500 </b>days
                             </p>
-                            <div className="d-flex align-items-center gap-10">
-                                <span className="badge rounded-circle p-3 bg-danger">1</span>:
-                                <span className="badge rounded-circle p-3 bg-danger">1</span>:
-                                <span className="badge rounded-circle p-3 bg-danger">1</span>
+                            <div className="d-flex align-items-center" style={{gap: '7px'}}>
+                                <span
+                                    style={{ padding: '13.5px', width: '42px', height: '40px' }}
+                                    className="badge rounded-circle bg-danger"
+                                >
+                                    20
+                                </span>
+                                :
+                                <span
+                                    style={{ padding: '13.5px', width: '42px', height: '40px' }}
+                                    className="badge rounded-circle bg-danger"
+                                >
+                                    1
+                                </span>
+                                :
+                                <span
+                                    style={{ padding: '13.5px', width: '42px', height: '40px' }}
+                                    className="badge rounded-circle bg-danger"
+                                >
+                                    1
+                                </span>
                             </div>
                         </div>
                         <div className="prod-count my-3">
@@ -51,7 +68,7 @@ const SpecialProduct = () => {
                             </div>
                         </div>
 
-                        <Link className='button'>Add to cart</Link>
+                        <Link className="button">Add to cart</Link>
                     </div>
                 </div>
             </div>

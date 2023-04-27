@@ -48,8 +48,8 @@ const Checkout = () => {
                                 action=""
                             >
                                 <div className="w-100">
-                                    <select name="" id="" className="form-control form-select">
-                                        <option value="" selected disabled>
+                                    <select name="" defaultValue='country' id="" className="form-control form-select">
+                                        <option value="country" disabled>
                                             Country
                                         </option>
                                     </select>
@@ -90,8 +90,8 @@ const Checkout = () => {
                                     />
                                 </div>
                                 <div className="flex-grow-1">
-                                    <select name="" id="" className="form-control form-select">
-                                        <option value="" selected disabled>
+                                    <select name="" defaultValue='state' id="" className="form-control form-select">
+                                        <option value="state" disabled>
                                             State
                                         </option>
                                     </select>
@@ -123,7 +123,7 @@ const Checkout = () => {
                                 <div className="w-75 d-flex gap-10">
                                     <div className="w-25 position-relative">
                                         <span
-                                            style={{ top: '-10px', right: '2px' }}
+                                            style={{ top: '-10px', right: '2px', width: '20px' }}
                                             className="badge bg-secondary text-white rounded-circle p-1 position-absolute"
                                         >
                                             1

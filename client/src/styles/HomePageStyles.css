@@ -84,10 +84,9 @@
 
 .categories > div > div {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 24px;
-    color: var(--color-131921);
-    margin: 0 0 10px;
+    color: #212529;
     letter-spacing: 0.3px;
 }
 
