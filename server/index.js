@@ -5,6 +5,7 @@ require('dotenv').config;
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
+const cors = require('cors');
 
 const { notFound, errorHandler } = require('./middlewares/errorHandler');
 const authRouter = require('./routes/authRoute');
@@ -21,6 +22,7 @@ const PORT = process.env.PORT || 4000;
 
 dbConnect();
 
+app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
