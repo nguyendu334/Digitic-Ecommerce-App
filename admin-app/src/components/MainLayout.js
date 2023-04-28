@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Outlet } from 'react-router-dom';
+import { useNavigate, Outlet, Link } from 'react-router-dom';
 import {
     AiOutlineDashboard,
     AiOutlineShoppingCart,
@@ -76,7 +76,7 @@ const MainLayout = () => {
                                 {
                                     key: 'brand',
                                     icon: <SiBrandfolder className="fs-4" />,
-                                    label: 'Brand',
+                                    label: 'Add Brand',
                                 },
                                 {
                                     key: 'brand-list',
@@ -86,7 +86,7 @@ const MainLayout = () => {
                                 {
                                     key: 'category',
                                     icon: <BiCategory className="fs-4" />,
-                                    label: 'Category',
+                                    label: 'Add Category',
                                 },
                                 {
                                     key: 'category-list',
@@ -96,7 +96,7 @@ const MainLayout = () => {
                                 {
                                     key: 'color',
                                     icon: <AiOutlineBgColors className="fs-4" />,
-                                    label: 'Color',
+                                    label: 'Add Color',
                                 },
                                 {
                                     key: 'color-list',
@@ -170,7 +170,7 @@ const MainLayout = () => {
                                 3
                             </span>
                         </div>
-                        <div className="d-flex gap-3 align-items-center">
+                        <div className="d-flex gap-3 align-items-center dropdown">
                             <div>
                                 <img
                                     width={40}
@@ -178,9 +178,36 @@ const MainLayout = () => {
                                     alt=""
                                 />
                             </div>
-                            <div>
+                            <div
+                                role="button"
+                                id="dropdownMenuLink"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
                                 <h5 className="mb-0">Navdeep</h5>
                                 <p className="mb-0">nguyendu334@gmail.com</p>
+                            </div>
+                            <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <div>
+                                    <li>
+                                        <Link
+                                            className="dropdown-item py-1 mb-1"
+                                            style={{ height: 'auto', lineHeight: '20px' }}
+                                            to="#"
+                                        >
+                                            View Profile
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            className="dropdown-item py-1 mb-1"
+                                            style={{ height: 'auto', lineHeight: '20px' }}
+                                            to="#"
+                                        >
+                                            Sign Out
+                                        </Link>
+                                    </li>
+                                </div>
                             </div>
                         </div>
                     </div>
