@@ -25,20 +25,25 @@ const Login = () => {
         },
     });
 
-    const { user, isLoading, isError, isSucess, message } = useSelector((state) => state.auth);
+    const authState = useSelector((state) => state);
+    const { user, isLoading, isError, isSucess, message } = authState.auth;
     useEffect(() => {
-        if (!user == null || isSucess) {
-            navigate('admin');
+        if (isSucess === true) {
+            navigate('/admin');
         } else {
-            navigate('/');
+            navigate('');
         }
-    }, [user, isLoading, isError, isSucess, message]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [user, isLoading, isError, isSucess]);
 
     return (
         <div className="py-5" style={{ background: '#F7E1AE', minHeight: '100vh' }}>
             <div className="my-5 w-25 bg-white rounded-3 mx-auto p-3">
                 <h3 className="text-center">Login</h3>
                 <p className="text-center">Login to your account to continue.</p>
+                <div className="error text-center">
+                    {message.message === 'Rejected' ? 'You are not an admin' : ''}
+                </div>
                 <form action="" onSubmit={formik.handleSubmit}>
                     <CustomInput
                         type="text"

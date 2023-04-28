@@ -1,34 +1,38 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import authService from './authService';
 
-const userDefaultState = {
-    _id: null,
-    firstname: null,
-    lastname: null,
-    email: null,
-    mobile: null,
-    token: null,
-};
+const getUserFromLocalStorage = localStorage.getItem('user')
+    ? JSON.parse(localStorage.getItem('user'))
+    : null;
+
+// const userDefaultState = {
+//     _id: null,
+//     firstname: null,
+//     lastname: null,
+//     email: null,
+//     mobile: null,
+//     token: null,
+// };
 
 const initialState = {
-    user: userDefaultState,
+    user: getUserFromLocalStorage,
     isError: false,
     isLoading: false,
     isSucess: false,
     message: '',
 };
 
-export const login = createAsyncThunk('auth/admin-login', async (user, thunkAPI) => {
+export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
     try {
         return await authService.login(user);
     } catch (error) {
-        return thunkAPI.rejectWithValue(error.response.data);
+        return thunkAPI.rejectWithValue(error);
     }
 });
 
 export const authSlice = createSlice({
     name: 'auth',
-    initialState,
+    initialState: initialState,
     reducers: {},
     extraReducers: (builder) => {
         builder
@@ -37,6 +41,7 @@ export const authSlice = createSlice({
             })
             .addCase(login.fulfilled, (state, action) => {
                 state.isLoading = false;
+                state.isError = false;
                 state.isSucess = true;
                 state.user = action.payload;
             })
