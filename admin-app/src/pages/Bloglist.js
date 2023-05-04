@@ -1,5 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Table } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import Link from 'antd/es/typography/Link';
+import { BiEdit } from 'react-icons/bi';
+import { AiFillDelete } from 'react-icons/ai';
+import { getBlogs } from '../features/blogs/blogSlice';
 
 const columns = [
     {
@@ -7,30 +12,46 @@ const columns = [
         dataIndex: 'key',
     },
     {
-        title: 'Name',
+        title: 'Title',
         dataIndex: 'name',
+        sorter: (a, b) => a.name.length - b.name.length,
     },
     {
-        title: 'Product',
-        dataIndex: 'product',
+        title: 'Category',
+        dataIndex: 'category',
+        sorter: (a, b) => a.category.length - b.category.length,
     },
     {
-        title: 'Status',
-        dataIndex: 'status',
+        title: 'Action',
+        dataIndex: 'action',
     },
 ];
 
-const data1 = [];
-for (let i = 0; i < 46; i++) {
-    data1.push({
-        key: i,
-        name: `Edward King ${i}`,
-        product: 32,
-        status: `London, Park Lane no. ${i}`,
-    });
-}
-
 const Bloglist = () => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getBlogs());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+    const blogState = useSelector((state) => state.blogs.blogs);
+    const data1 = [];
+    for (let i = 0; i < blogState.length; i++) {
+        data1.push({
+            key: i + 1,
+            name: blogState[i].title,
+            category: blogState[i].category,
+            action: (
+                <>
+                    <Link to="/" className="fs-3 text-danger">
+                        <BiEdit />
+                    </Link>
+                    <Link to="/" className="fs-3 ms-3 text-danger">
+                        <AiFillDelete />
+                    </Link>
+                </>
+            ),
+        });
+    }
     return (
         <div>
             <h3 className="mb-4 title">Blogs List</h3>
