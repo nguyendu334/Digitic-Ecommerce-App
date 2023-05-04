@@ -399,7 +399,7 @@ const createOrder = asyncHandler(async (req, res) => {
         let userCart = await Cart.findOne({ orderedBy: user._id });
         let finalAmout = 0;
         if (couponApplied && userCart.totalAfterDiscount) {
-            finalAmout = userCart.totalAfterDiscount * 100;
+            finalAmout = userCart.totalAfterDiscount;
         } else {
             finalAmout = userCart.cartTotal;
         }
@@ -440,6 +440,20 @@ const getOrder = asyncHandler(async (req, res) => {
     try {
         const userOrders = await Order.findOne({ orderedBy: _id })
             .populate('products.product')
+            .populate('orderedBy')
+            .exec();
+        res.json(userOrders);
+    } catch (error) {
+        throw new Error(error);
+    }
+});
+
+// get all order
+const getAllOrder = asyncHandler(async (req, res) => {
+    try {
+        const userOrders = await Order.find()
+            .populate('products.product')
+            .populate('orderedBy')
             .exec();
         res.json(userOrders);
     } catch (error) {
@@ -492,5 +506,6 @@ module.exports = {
     applyCoupon,
     createOrder,
     getOrder,
+    getAllOrder,
     updateOrderStatus,
 };
