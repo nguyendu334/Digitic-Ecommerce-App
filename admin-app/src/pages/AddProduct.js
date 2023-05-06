@@ -47,10 +47,10 @@ const AddProduct = () => {
     const imgState = useSelector((state) => state.upload.images);
     const newProduct = useSelector((state) => state.products);
 
-    const { isSucess, isError, isLoading, createdProduct } = newProduct;
+    const { isSucess, isError, isLoading, createProduct } = newProduct;
 
     useEffect(() => {
-        if (isSucess && createdProduct) {
+        if (isSucess && createProduct) {
             toast.success('Product added successfully!');
         } if (isError) {
             toast.error('Something went wrong!');
