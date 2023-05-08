@@ -10,6 +10,7 @@ import {
     AiOutlinePicRight,
     AiOutlinePullRequest,
 } from 'react-icons/ai';
+import { RiCouponLine } from 'react-icons/ri';
 import { SiBrandfolder } from 'react-icons/si';
 import { BiCategory } from 'react-icons/bi';
 import { FaClipboardList, FaBloggerB } from 'react-icons/fa';
@@ -110,6 +111,23 @@ const MainLayout = () => {
                             key: 'orders',
                             icon: <FaClipboardList className="fs-4" />,
                             label: 'Orders',
+                        },
+                        {
+                            key: 'marketing',
+                            icon: <RiCouponLine className="fs-4" />,
+                            label: 'Marketing',
+                            children: [
+                                {
+                                    key: 'coupon',
+                                    icon: <ImBlog className="fs-4" />,
+                                    label: 'Add Coupon',
+                                },
+                                {
+                                    key: 'coupon-list',
+                                    icon: <RiCouponLine className="fs-4" />,
+                                    label: 'Coupon List',
+                                },
+                            ],
                         },
                         {
                             key: 'blogs',
@@ -223,7 +241,7 @@ const MainLayout = () => {
                 >
                     <ToastContainer
                         position="top-right"
-                        autoClose={5000}
+                        autoClose={2000}
                         hideProgressBar={false}
                         newestOnTop={true}
                         closeOnClick
