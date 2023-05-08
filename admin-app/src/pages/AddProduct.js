@@ -13,10 +13,8 @@ import CustomInput from '../components/CustomInput';
 import { getBrands } from './../features/brands/brandSlice';
 import { getCategories } from './../features/prodCategory/ProdCategorySlice';
 import { getColors } from './../features/colors/colorSlice';
-import { uploadImg } from '../features/upload/uploadSlice';
-import { deleteImg } from '../features/upload/uploadSlice';
+import { uploadImg, deleteImg } from '../features/upload/uploadSlice';
 import { createProducts } from '../features/products/productSlice';
-
 
 let schema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
@@ -25,7 +23,7 @@ let schema = Yup.object().shape({
     brand: Yup.string().required('Brand is required'),
     category: Yup.string().required('Category is required'),
     tags: Yup.string().required('Tag is required'),
-    color: Yup.array().min(1, 'Pick at least one color').required('Category is required'),
+    color: Yup.array().min(1, 'Pick at least one color').required('Color is required'),
     quantity: Yup.number().required('Quantity is required'),
 });
 
@@ -52,7 +50,8 @@ const AddProduct = () => {
     useEffect(() => {
         if (isSucess && createProduct) {
             toast.success('Product added successfully!');
-        } if (isError) {
+        }
+        if (isError) {
             toast.error('Something went wrong!');
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
