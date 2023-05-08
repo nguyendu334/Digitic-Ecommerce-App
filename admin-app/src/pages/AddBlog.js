@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 
 import CustomInput from './../components/CustomInput';
 import { uploadImg, deleteImg } from '../features/upload/uploadSlice';
-import { createBlogs } from '../features/blogs/blogSlice';
+import { createBlogs, resetState } from '../features/blogs/blogSlice';
 import { getBlogCategory } from './../features/blogCategory/blogCategorySlice';
 
 let schema = Yup.object().shape({
@@ -69,6 +69,8 @@ const AddBlog = () => {
             dispatch(createBlogs(values));
             formik.resetForm();
             setTimeout(() => {
+                dispatch(resetState());
+                dispatch(deleteImg());
                 navigate('/admin/blog-list');
             }, 500);
         },

@@ -7,6 +7,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { createBrands } from '../features/brands/brandSlice';
+import { resetState } from '../features/brands/brandSlice';
 
 let schema = Yup.object().shape({
     title: Yup.string().required('Brand name is required'),
@@ -39,6 +40,7 @@ const AddBrand = () => {
             dispatch(createBrands(values));
             formik.resetForm();
             setTimeout(() => {
+                dispatch(resetState());
                 navigate('/admin/brand-list');
             }, 500);
         },

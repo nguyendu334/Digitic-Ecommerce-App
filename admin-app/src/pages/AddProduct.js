@@ -14,7 +14,7 @@ import { getBrands } from './../features/brands/brandSlice';
 import { getCategories } from './../features/prodCategory/ProdCategorySlice';
 import { getColors } from './../features/colors/colorSlice';
 import { uploadImg, deleteImg } from '../features/upload/uploadSlice';
-import { createProducts } from '../features/products/productSlice';
+import { createProducts, resetState } from '../features/products/productSlice';
 
 let schema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
@@ -97,6 +97,8 @@ const AddProduct = () => {
             formik.resetForm();
             setColor(null);
             setTimeout(() => {
+                dispatch(deleteImg());
+                dispatch(resetState());
                 navigate('/admin/product-list');
             }, 500);
         },
