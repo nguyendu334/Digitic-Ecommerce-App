@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Table } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import Link from 'antd/es/typography/Link';
+import { Link } from 'react-router-dom';
 import { AiFillDelete } from 'react-icons/ai';
 import { getOrders } from './../features/auth/authSlice';
 
