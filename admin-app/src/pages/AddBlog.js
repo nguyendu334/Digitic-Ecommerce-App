@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 import CustomInput from './../components/CustomInput';
 import { uploadImg, deleteImg } from '../features/upload/uploadSlice';
 import { createBlogs, resetState } from '../features/blogs/blogSlice';
-import { getBlogCategory } from './../features/blogCategory/blogCategorySlice';
+import { getBlogCategories } from './../features/blogCategory/blogCategorySlice';
 
 let schema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
@@ -24,7 +24,7 @@ const AddBlog = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        dispatch(getBlogCategory());
+        dispatch(getBlogCategories());
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
