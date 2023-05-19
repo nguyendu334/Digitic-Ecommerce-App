@@ -67,7 +67,7 @@ const AddCoupon = () => {
             toast.success('Coupon added successfully!');
         }
         if (isSucess && updatedCoupon) {
-            toast.success('Brand updated successfully!');
+            toast.success('Coupon updated successfully!');
         }
         if (isError) {
             toast.error('Something went wrong!');
