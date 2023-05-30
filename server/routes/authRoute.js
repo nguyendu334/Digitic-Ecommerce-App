@@ -24,6 +24,7 @@ const {
     createOrder,
     getOrder,
     getAllOrder,
+    getOrderByUserId,
     updateOrderStatus,
 } = require('../controllers/userCtrl');
 const { authMiddleware, isAdmin } = require('../middlewares/authMiddleware');
@@ -53,6 +54,7 @@ router.post('/cart/cash-order', authMiddleware, createOrder);
 // get orders
 router.get('/get-orders', authMiddleware, getOrder);
 router.get('/getallorders', authMiddleware, isAdmin, getAllOrder);
+router.post('/getorderbyuser/:id', authMiddleware, isAdmin, getOrderByUserId);
 
 // update order status
 router.put('/order/update-order/:id', authMiddleware, isAdmin, updateOrderStatus);
