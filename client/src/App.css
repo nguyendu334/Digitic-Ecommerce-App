@@ -77,3 +77,9 @@ a {
     background-color: var(--color-febd69);
     color: var(--color-131921);
 }
+
+.error {
+    color: red;
+    font-size: 12px;
+}
+
