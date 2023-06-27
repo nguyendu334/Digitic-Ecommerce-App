@@ -4,6 +4,9 @@ import { base_url } from '../../utils/base_url';
 const register = async (user) => {
     const response = await axios.post(`${base_url}/user/register`, user);
     if (response.data) {
+        if (response.data) {
+            localStorage.setItem('customer', JSON.stringify(response.data));
+        }
         return response.data;
     }
 };
