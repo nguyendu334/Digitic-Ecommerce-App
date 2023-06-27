@@ -1,16 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Marquee from 'react-fast-marquee';
+import moment from 'moment';
 import '../styles/HomePageStyles.css';
 import Meta from '../components/Meta';
 import BlogCard from './../components/BlogCard';
 import ProductCard from './../components/ProductCard';
 import SpecialProduct from '../components/SpecialProduct';
 import Container from '../components/Container';
+import { getAllBlogs } from '../features/blogs/blogSlice';
 
 import { services } from '../utils/Data';
 
 const Home = () => {
+    const dispatch = useDispatch();
+
+    const blogState = useSelector((state) => state?.blog?.blogs);
+    useEffect(() => {
+        getBlogs();
+    }, []);
+    const getBlogs = () => {
+        dispatch(getAllBlogs());
+    };
+
     return (
         <>
             <Meta title={'Home'} />
@@ -120,65 +133,65 @@ const Home = () => {
                     <div className="col-12">
                         <div className="categories d-flex justify-content-between flex-wrap align-items-center">
                             <div className="d-flex align-items-center justify-content-between">
-                                <div className='mb-0'>
+                                <div className="mb-0">
                                     <h6>Music & Gaming</h6>
-                                    <p className='mb-0'>10 Items</p>
+                                    <p className="mb-0">10 Items</p>
                                 </div>
                                 <img src="images/camera.jpg" alt="camera" />
                             </div>
 
                             <div className="d-flex align-items-center justify-content-between">
-                                <div className='mb-0'>
+                                <div className="mb-0">
                                     <h6>Camera</h6>
-                                    <p className='mb-0'>10 Items</p>
+                                    <p className="mb-0">10 Items</p>
                                 </div>
                                 <img src="images/camera.jpg" alt="camera" />
                             </div>
 
                             <div className="d-flex align-items-center justify-content-between">
-                                <div className='mb-0'>
+                                <div className="mb-0">
                                     <h6>Smart TV</h6>
-                                    <p className='mb-0'>10 Items</p>
+                                    <p className="mb-0">10 Items</p>
                                 </div>
                                 <img src="images/tv.jpg" alt="smart tv" />
                             </div>
 
                             <div className="d-flex align-items-center justify-content-between">
-                                <div className='mb-0'>
+                                <div className="mb-0">
                                     <h6>Smart Watches</h6>
-                                    <p className='mb-0'>10 Items</p>
+                                    <p className="mb-0">10 Items</p>
                                 </div>
                                 <img src="images/headphone.jpg" alt="smart watch" />
                             </div>
 
                             <div className="d-flex align-items-center justify-content-between">
-                                <div className='mb-0'>
+                                <div className="mb-0">
                                     <h6>Music & Gaming</h6>
-                                    <p className='mb-0'>10 Items</p>
+                                    <p className="mb-0">10 Items</p>
                                 </div>
                                 <img src="images/camera.jpg" alt="camera" />
                             </div>
 
                             <div className="d-flex align-items-center justify-content-between">
-                                <div className='mb-0'>
+                                <div className="mb-0">
                                     <h6>Cameras</h6>
-                                    <p className='mb-0'>10 Items</p>
+                                    <p className="mb-0">10 Items</p>
                                 </div>
                                 <img src="images/camera.jpg" alt="camera" />
                             </div>
 
                             <div className="d-flex align-items-center justify-content-between">
-                                <div className='mb-0'>
+                                <div className="mb-0">
                                     <h6>Smart TV</h6>
-                                    <p className='mb-0'>10 Items</p>
+                                    <p className="mb-0">10 Items</p>
                                 </div>
                                 <img src="images/tv.jpg" alt="smart tv" />
                             </div>
 
                             <div className="d-flex align-items-center justify-content-between">
-                                <div className='mb-0'>
+                                <div className="mb-0">
                                     <h6>Smart Watches</h6>
-                                    <p className='mb-0'>10 Items</p>
+                                    <p className="mb-0">10 Items</p>
                                 </div>
                                 <img src="images/headphone.jpg" alt="smart watch" />
                             </div>
@@ -316,18 +329,24 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-3">
-                        <BlogCard />
-                    </div>
-                    <div className="col-3">
-                        <BlogCard />
-                    </div>
-                    <div className="col-3">
-                        <BlogCard />
-                    </div>
-                    <div className="col-3">
-                        <BlogCard />
-                    </div>
+                    {blogState &&
+                        blogState?.map((item, index) => {
+                            if (index < 4) {
+                                return (
+                                    <div key={index} className="col-3">
+                                        <BlogCard
+                                            id={item?._id}
+                                            title={item?.title}
+                                            description={item?.description}
+                                            image={item?.images[0].url}
+                                            date={moment(item?.createdAt).format(
+                                                'MMMM Do YYYY, h:mm:ss a',
+                                            )}
+                                        />
+                                    </div>
+                                );
+                            }
+                        })}
                 </div>
             </Container>
         </>
