@@ -5,8 +5,8 @@
 
 .compare-product-card .cross,
 .wishlist-card .cross {
-    top: 15px;
-    right: 15px;
+    top: 30px;
+    right: 30px;
     width: 22px;
     padding: 3px;
     cursor: pointer;
