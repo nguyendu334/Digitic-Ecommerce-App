@@ -32,7 +32,7 @@ const Wishlist = () => {
             <Container class1="wishlist-wrapper home-wrapper-2 py-5">
                 <div className="row">
                     {wishlistState?.length > 0 ? (
-                        wishlistState?.map((item, index) => {
+                        wishlistState && wishlistState?.map((item, index) => {
                             return (
                                 <div className="col-3" key={index}>
                                     <div className="wishlist-card position-relative">

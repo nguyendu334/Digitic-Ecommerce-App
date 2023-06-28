@@ -10,18 +10,38 @@ import ProductCard from './../components/ProductCard';
 import SpecialProduct from '../components/SpecialProduct';
 import Container from '../components/Container';
 import { getAllBlogs } from '../features/blogs/blogSlice';
-
+import { getAllProducts } from '../features/products/productSlice';
 import { services } from '../utils/Data';
+
+import ReactStars from 'react-rating-stars-component';
+import '../styles/Products/ProductCardStyles.css';
+import prodcompare from '../images/prodcompare.svg';
+import wish from '../images/wish.svg';
+import watch2 from '../images/watch-2.avif';
+import addcart from '../images/add-cart.svg';
+import view from '../images/view.svg';
+import { addToWishlist } from '../features/products/productSlice';
 
 const Home = () => {
     const dispatch = useDispatch();
 
+    const wishlist = (id) => {
+        dispatch(addToWishlist(id));
+    };
+
     const blogState = useSelector((state) => state?.blog?.blogs);
+    const productState = useSelector((state) => state?.product?.products);
+
     useEffect(() => {
         getBlogs();
+        getProducts();
     }, []);
     const getBlogs = () => {
         dispatch(getAllBlogs());
+    };
+
+    const getProducts = () => {
+        dispatch(getAllProducts());
     };
 
     return (
@@ -205,10 +225,77 @@ const Home = () => {
                     <div className="col-12">
                         <h3 className="section-heading">Featured Collection</h3>
                     </div>
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
+                    {productState &&
+                        productState?.map((item, index) => {
+                            if (item?.tags === 'featured') {
+                                return (
+                                    <div key={index} className="col-3">
+                                        <Link
+                                            // to={`${
+                                            //     location.pathname === '/'
+                                            //         ? 'product/:id'
+                                            //         : location.pathname === '/product/:id'
+                                            //         ? '/product/:id'
+                                            //         : ':id'
+                                            // }`}
+                                            className="product-card position-relative"
+                                        >
+                                            <div className="wishlist-icon position-absolute">
+                                                <button
+                                                    className="border-0 bg-transparent"
+                                                    onClick={(e) => {
+                                                        wishlist(item?._id);
+                                                    }}
+                                                >
+                                                    <img src={wish} alt="wishlist" />
+                                                </button>
+                                            </div>
+
+                                            <div className="product-image">
+                                                <img
+                                                    src={item?.images[0]?.url}
+                                                    className="img-fluid mx-1"
+                                                    alt="product"
+                                                    width={260}
+                                                />
+                                                <img
+                                                    src={watch2}
+                                                    className="img-fluid"
+                                                    alt="product"
+                                                />
+                                            </div>
+
+                                            <div className="product-details">
+                                                <h6 className="brand">{item?.brand}</h6>
+                                                <h5 className="product-title">{item?.title}</h5>
+                                                <ReactStars
+                                                    count={5}
+                                                    size={24}
+                                                    value={item?.totalrating.toString()}
+                                                    edit={false}
+                                                    activeColor="#ffd700"
+                                                />
+                                                <p className="price">${item?.price}</p>
+                                            </div>
+
+                                            <div className="action-bar position-absolute">
+                                                <div className="d-flex flex-column gap-15">
+                                                    <button className="border-0 bg-transparent">
+                                                        <img src={prodcompare} alt="compare" />
+                                                    </button>
+                                                    <button className="border-0 bg-transparent">
+                                                        <img src={view} alt="view" />
+                                                    </button>
+                                                    <button className="border-0 bg-transparent">
+                                                        <img src={addcart} alt="addcart" />
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                );
+                            }
+                        })}
                 </div>
             </Container>
 
@@ -266,9 +353,23 @@ const Home = () => {
                         <h3 className="section-heading">Special Products</h3>
                     </div>
                     <div className="row">
-                        <SpecialProduct />
-                        <SpecialProduct />
-                        <SpecialProduct />
+                        {productState &&
+                            productState?.map((item, index) => {
+                                if (item?.tags === 'special') {
+                                    return (
+                                        <SpecialProduct
+                                            key={index}
+                                            title={item?.title}
+                                            image={item?.images[0]?.url}
+                                            brand={item?.brand}
+                                            rating={item?.totalrating.toString()}
+                                            price={item?.price}
+                                            sold={item?.sold}
+                                            quantity={item?.quantity}
+                                        />
+                                    );
+                                }
+                            })}
                     </div>
                 </div>
             </Container>
@@ -280,10 +381,77 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="row">
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
+                    {productState &&
+                        productState?.map((item, index) => {
+                            if (item?.tags === 'popular') {
+                                return (
+                                    <div key={index} className="col-3">
+                                        <Link
+                                            // to={`${
+                                            //     location.pathname === '/'
+                                            //         ? 'product/:id'
+                                            //         : location.pathname === '/product/:id'
+                                            //         ? '/product/:id'
+                                            //         : ':id'
+                                            // }`}
+                                            className="product-card position-relative"
+                                        >
+                                            <div className="wishlist-icon position-absolute">
+                                                <button
+                                                    className="border-0 bg-transparent"
+                                                    onClick={(e) => {
+                                                        wishlist(item?._id);
+                                                    }}
+                                                >
+                                                    <img src={wish} alt="wishlist" />
+                                                </button>
+                                            </div>
+
+                                            <div className="product-image">
+                                                <img
+                                                    src={item?.images[0]?.url}
+                                                    className="img-fluid mx-1"
+                                                    alt="product"
+                                                    width={260}
+                                                />
+                                                <img
+                                                    src={watch2}
+                                                    className="img-fluid"
+                                                    alt="product"
+                                                />
+                                            </div>
+
+                                            <div className="product-details">
+                                                <h6 className="brand">{item?.brand}</h6>
+                                                <h5 className="product-title">{item?.title}</h5>
+                                                <ReactStars
+                                                    count={5}
+                                                    size={24}
+                                                    value={item?.totalrating.toString()}
+                                                    edit={false}
+                                                    activeColor="#ffd700"
+                                                />
+                                                <p className="price">${item?.price}</p>
+                                            </div>
+
+                                            <div className="action-bar position-absolute">
+                                                <div className="d-flex flex-column gap-15">
+                                                    <button className="border-0 bg-transparent">
+                                                        <img src={prodcompare} alt="compare" />
+                                                    </button>
+                                                    <button className="border-0 bg-transparent">
+                                                        <img src={view} alt="view" />
+                                                    </button>
+                                                    <button className="border-0 bg-transparent">
+                                                        <img src={addcart} alt="addcart" />
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                );
+                            }
+                        })}
                 </div>
             </Container>
 
