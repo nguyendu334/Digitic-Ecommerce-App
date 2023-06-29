@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import watch from '../images/watch.jpg';
 
 const SpecialProduct = (props) => {
-    const { title, brand, image, price, sold, quantity, rating, productCount } = props;
+    const { title, brand, image, price, sold, quantity, rating, prodId } = props;
     return (
         <div className="col-6 mb-3">
             <div className="special-product-card">
@@ -76,7 +76,7 @@ const SpecialProduct = (props) => {
                             </div>
                         </div>
 
-                        <Link className="button">Add to cart</Link>
+                        <Link className="button" to={'/product/' + prodId}>View</Link>
                     </div>
                 </div>
             </div>

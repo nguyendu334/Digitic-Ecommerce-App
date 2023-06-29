@@ -1,22 +1,37 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TbGitCompare } from 'react-icons/tb';
 import { AiOutlineHeart } from 'react-icons/ai';
 import ReactStars from 'react-rating-stars-component';
 import ReactImageZoom from 'react-image-zoom';
+import { useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import BreadCrumb from '../../components/BreadCrumb';
 import Meta from '../../components/Meta';
 import ProductCard from '../../components/ProductCard';
 import Color from '../../components/Color';
 import '../../styles/Products/SingleProductPageStyles.css';
 import Container from './../../components/Container';
+import { getProduct } from '../../features/products/productSlice';
 
 const SingleProduct = () => {
+    const location = useLocation();
+    const getProductId = location.pathname.split('/')[2];
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getProduct(getProductId));
+    }, []);
+
+    const productState = useSelector((state) => state?.product?.singleProd);
+
     const props = {
-        width: 400,
+        width: 600,
         height: 600,
         zoomWidth: 600,
-        img: 'https://cdn.dribbble.com/users/2400293/screenshots/19766354/media/f00ba86ba0c81e959f855126e2d6a8ba.png?compress=1&resize=1000x750&vertical=top',
+        img: productState?.images[0]?.url
+            ? productState?.images[0]?.url
+            : 'https://cdn.dribbble.com/users/2400293/screenshots/19766354/media/f00ba86ba0c81e959f855126e2d6a8ba.png?compress=1&resize=1000x750&vertical=top',
     };
     // eslint-disable-next-line no-unused-vars
     const [orderedProduct, setOrderedProduct] = useState(true);
@@ -33,8 +48,8 @@ const SingleProduct = () => {
 
     return (
         <>
-            <Meta title={'Product Name'} />
-            <BreadCrumb title="Product Name" />
+            <Meta title={productState?.title} />
+            <BreadCrumb title={productState?.title} />
             <Container class1="main-product-wrapper py-5 home-wrapper-2">
                 <div className="row">
                     <div className="col-6">
@@ -44,50 +59,31 @@ const SingleProduct = () => {
                             </div>
                         </div>
                         <div className="other-product-images d-flex flex-wrap gap-15">
-                            <div>
-                                <img
-                                    src="https://cdn.dribbble.com/users/2400293/screenshots/19766354/media/f00ba86ba0c81e959f855126e2d6a8ba.png?compress=1&resize=1000x750&vertical=top"
-                                    alt=""
-                                    className="img-fluid"
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    src="https://cdn.dribbble.com/users/2400293/screenshots/19766354/media/f00ba86ba0c81e959f855126e2d6a8ba.png?compress=1&resize=1000x750&vertical=top"
-                                    alt=""
-                                    className="img-fluid"
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    src="https://cdn.dribbble.com/users/2400293/screenshots/19766354/media/f00ba86ba0c81e959f855126e2d6a8ba.png?compress=1&resize=1000x750&vertical=top"
-                                    alt=""
-                                    className="img-fluid"
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    src="https://cdn.dribbble.com/users/2400293/screenshots/19766354/media/f00ba86ba0c81e959f855126e2d6a8ba.png?compress=1&resize=1000x750&vertical=top"
-                                    alt=""
-                                    className="img-fluid"
-                                />
-                            </div>
+                            {productState?.images?.map((item) => {
+                                return (
+                                    <div>
+                                        <img
+                                            src={item?.url}
+                                            alt=""
+                                            className="img-fluid"
+                                        />
+                                    </div>
+                                );
+                            })}
                         </div>
                     </div>
                     <div className="col-6">
                         <div className="main-product-details">
                             <div className="border-bottom">
-                                <h3 className="title">
-                                    Kids Headphone Bulk 10 Pack Multi Colored For Students
-                                </h3>
+                                <h3 className="title">{productState?.title}</h3>
                             </div>
                             <div className="border-bottom py-3">
-                                <p className="price">$100</p>
+                                <p className="price">$ {productState?.price}</p>
                                 <div className="d-flex align-items-center gap-10">
                                     <ReactStars
                                         count={5}
                                         size={24}
-                                        value={3}
+                                        value={productState?.totalrating}
                                         edit={false}
                                         activeColor="#ffd700"
                                     />
@@ -100,19 +96,19 @@ const SingleProduct = () => {
                             <div className="py-3">
                                 <div className="d-flex gap-10 align-items-center my-2">
                                     <h3 className="product-heading">Type: </h3>
-                                    <p className="product-data">Watch</p>
+                                    <p className="product-data">{productState?.category}</p>
                                 </div>
                                 <div className="d-flex gap-10 align-items-center my-2">
                                     <h3 className="product-heading">Brand: </h3>
-                                    <p className="product-data">Havells</p>
+                                    <p className="product-data">{productState?.brand}</p>
                                 </div>
                                 <div className="d-flex gap-10 align-items-center my-2">
                                     <h3 className="product-heading">Category: </h3>
-                                    <p className="product-data">Watch</p>
+                                    <p className="product-data">{productState?.category}</p>
                                 </div>
                                 <div className="d-flex gap-10 align-items-center my-2">
                                     <h3 className="product-heading">Tags: </h3>
-                                    <p className="product-data">Watch</p>
+                                    <p className="product-data">{productState?.tags}</p>
                                 </div>
                                 <div className="d-flex gap-10 align-items-center my-2">
                                     <h3 className="product-heading">Availablity: </h3>
@@ -186,14 +182,12 @@ const SingleProduct = () => {
                                 </div>
 
                                 <div className="d-flex gap-10 align-items-center my-3">
-                                    <h3 className="product-heading">Product Link</h3>
+                                    <h3 className="product-heading">Product Link:</h3>
                                     <a
                                         // eslint-disable-next-line no-script-url
                                         href="javascript:void(0);"
                                         onClick={() => {
-                                            copyToClipboard(
-                                                'https://cdn.dribbble.com/users/2400293/screenshots/19766354/media/f00ba86ba0c81e959f855126e2d6a8ba.png?compress=1&resize=1000x750&vertical=top',
-                                            );
+                                            copyToClipboard(window.location.href);
                                         }}
                                     >
                                         Copy Product Link
@@ -210,12 +204,7 @@ const SingleProduct = () => {
                     <div className="col-12">
                         <h4>Description</h4>
                         <div className="bg-white p-3">
-                            <p>
-                                Quis dolore consequat commodo cillum exercitation nisi laborum esse
-                                ipsum magna incididunt ut dolore.Eu laboris mollit laboris excepteur
-                                eu ullamco do laboris culpa ad.Aute ea quis ullamco ex cillum in ex
-                                dolore cupidatat.
-                            </p>
+                            <p dangerouslySetInnerHTML={{ __html: productState?.description }}></p>
                         </div>
                     </div>
                 </div>
