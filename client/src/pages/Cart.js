@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import BreadCrumb from '../components/BreadCrumb';
 import Meta from '../components/Meta';
 import '../styles/CartPageStyles.css';
-import watch from '../images/watch.jpg';
 import { Link } from 'react-router-dom';
 import Container from './../components/Container';
 import { getUserCart } from '../features/user/userSlice';
@@ -54,7 +53,7 @@ const Cart = () => {
                                                     <ul className="colors ps-0">
                                                         <li
                                                             style={{
-                                                                backgroundColor: item?.title,
+                                                                backgroundColor: item?.color.title,
                                                             }}
                                                         ></li>
                                                     </ul>
