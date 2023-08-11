@@ -309,33 +309,16 @@ const getWishlist = asyncHandler(async (req, res) => {
 
 // user add to cart
 const userCart = asyncHandler(async (req, res) => {
-    const { cart } = req.body;
+    const { productId, color, quantity, price } = req.body;
     const { _id } = req.user;
     validateMongoDbId(_id);
     try {
-        let products = [];
-        const user = await User.findById(_id);
-        const aldreadyExistCart = await Cart.findOne({ orderedBy: user._id });
-        if (aldreadyExistCart) {
-            aldreadyExistCart.remove();
-        }
-        for (let i = 0; i < cart.length; i++) {
-            let object = {};
-            object.product = cart[i]._id;
-            object.count = cart[i].count;
-            object.color = cart[i].color;
-            let getPrice = await Product.findById(cart[i]._id).select('price').exec();
-            object.price = getPrice.price;
-            products.push(object);
-        }
-        let cartTotal = 0;
-        for (let i = 0; i < products.length; i++) {
-            cartTotal = cartTotal + products[i].price * products[i].count;
-        }
         let newCart = await new Cart({
-            products,
-            cartTotal,
-            orderedBy: user?._id,
+            userId: _id,
+            productId,
+            color,
+            quantity,
+            price,
         }).save();
         res.json(newCart);
     } catch (error) {
@@ -348,7 +331,7 @@ const getUserCart = asyncHandler(async (req, res) => {
     const { _id } = req.user;
     validateMongoDbId(_id);
     try {
-        const cart = await Cart.findOne({ orderedBy: _id }).populate('products.product');
+        const cart = await Cart.find({ userId: _id }).populate('productId').populate('color');
         res.json(cart);
     } catch (error) {
         throw new Error(error);
@@ -461,7 +444,7 @@ const getAllOrder = asyncHandler(async (req, res) => {
     }
 });
 
-// get order by user id 
+// get order by user id
 const getOrderByUserId = asyncHandler(async (req, res) => {
     const { id } = req.params;
     validateMongoDbId(id);

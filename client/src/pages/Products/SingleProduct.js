@@ -6,6 +6,7 @@ import ReactStars from 'react-rating-stars-component';
 import ReactImageZoom from 'react-image-zoom';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import BreadCrumb from '../../components/BreadCrumb';
 import Meta from '../../components/Meta';
 import ProductCard from '../../components/ProductCard';
@@ -13,6 +14,7 @@ import Color from '../../components/Color';
 import '../../styles/Products/SingleProductPageStyles.css';
 import Container from './../../components/Container';
 import { getProduct } from '../../features/products/productSlice';
+import { addProdToCart } from '../../features/user/userSlice';
 
 const SingleProduct = () => {
     const location = useLocation();
@@ -24,6 +26,25 @@ const SingleProduct = () => {
     }, []);
 
     const productState = useSelector((state) => state?.product?.singleProd);
+
+    const [color, setColor] = useState(null);
+    const [quantity, setQuantity] = useState(1);
+
+    const uploadCart = () => {
+        if (color === null) {
+            toast.error('Please Choose Color');
+            return false;
+        } else {
+            dispatch(
+                addProdToCart({
+                    productId: productState?._id,
+                    quantity,
+                    color,
+                    price: productState?.price,
+                }),
+            );
+        }
+    };
 
     const props = {
         width: 600,
@@ -62,11 +83,7 @@ const SingleProduct = () => {
                             {productState?.images?.map((item) => {
                                 return (
                                     <div>
-                                        <img
-                                            src={item?.url}
-                                            alt=""
-                                            className="img-fluid"
-                                        />
+                                        <img src={item?.url} alt="" className="img-fluid" />
                                     </div>
                                 );
                             })}
@@ -134,7 +151,7 @@ const SingleProduct = () => {
                                 </div>
                                 <div className="d-flex gap-10 flex-column mt-2 mb-3">
                                     <h3 className="product-heading">Color: </h3>
-                                    <Color />
+                                    <Color setColor={setColor} colorData={productState?.color} />
                                 </div>
                                 <div className="d-flex align-items-center gap-15 flex-row mt-2 mb-3">
                                     <h3 className="product-heading">Quantity: </h3>
@@ -147,10 +164,17 @@ const SingleProduct = () => {
                                             style={{
                                                 width: '70px',
                                             }}
+                                            id=""
+                                            onChange={(e) => setQuantity(e.target.value)}
+                                            value={quantity}
                                         />
                                     </div>
                                     <div className="d-flex align-items-center gap-30 ms-5">
-                                        <button className="button border-0" type="submit">
+                                        <button
+                                            className="button border-0"
+                                            type="button"
+                                            onClick={() => uploadCart()}
+                                        >
                                             Add to Cart
                                         </button>
                                         <button className="button buynow">Buy it Now</button>
