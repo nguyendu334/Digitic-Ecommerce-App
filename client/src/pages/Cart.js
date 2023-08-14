@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiFillDelete } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import BreadCrumb from '../components/BreadCrumb';
@@ -6,16 +6,37 @@ import Meta from '../components/Meta';
 import '../styles/CartPageStyles.css';
 import { Link } from 'react-router-dom';
 import Container from './../components/Container';
-import { getUserCart } from '../features/user/userSlice';
+import { getUserCart, removeProdFromCart, updateProdFromCart } from '../features/user/userSlice';
 
 const Cart = () => {
     const dispatch = useDispatch();
-
+    const [productUpdateDetail, setProductUpdateDetail] = useState(null);
     const userCartState = useSelector((state) => state.auth?.cartProducts);
 
     useEffect(() => {
         dispatch(getUserCart());
     }, []);
+
+    useEffect(() => {
+        if (productUpdateDetail !== null) {
+            dispatch(
+                updateProdFromCart({
+                    cartId: productUpdateDetail?.cartId,
+                    quantity: productUpdateDetail?.quantity,
+                }),
+            );
+            setTimeout(() => {
+                dispatch(getUserCart());
+            }, 200);
+        }
+    }, [productUpdateDetail]);
+
+    const deleteCartItem = (id) => {
+        dispatch(removeProdFromCart(id));
+        setTimeout(() => {
+            dispatch(getUserCart());
+        }, 200);
+    };
 
     return (
         <>
@@ -48,7 +69,7 @@ const Cart = () => {
                                             </div>
                                             <div className="w-75">
                                                 <p>{item?.productId.title}</p>
-                                                <p className='d-flex gap-3'>
+                                                <p className="d-flex gap-3">
                                                     Color:{' '}
                                                     <ul className="colors ps-0">
                                                         <li
@@ -70,17 +91,32 @@ const Cart = () => {
                                                     className="form-control"
                                                     name=""
                                                     id=""
-                                                    value={item?.quantity}
+                                                    value={
+                                                        productUpdateDetail?.quantity
+                                                            ? productUpdateDetail?.quantity
+                                                            : item?.quantity
+                                                    }
+                                                    onChange={(e) =>
+                                                        setProductUpdateDetail({
+                                                            cartId: item?._id,
+                                                            quantity: e.target.value,
+                                                        })
+                                                    }
                                                     min={1}
                                                     max={10}
                                                 />
                                             </div>
                                             <div>
-                                                <AiFillDelete className="text-danger" />
+                                                <AiFillDelete
+                                                    onClick={() => deleteCartItem(item?._id)}
+                                                    className="text-danger"
+                                                />
                                             </div>
                                         </div>
                                         <div className="cart-col-4">
-                                            <h5 className="price">$ {item?.price * item?.quantity}</h5>
+                                            <h5 className="price">
+                                                $ {item?.price * item?.quantity}
+                                            </h5>
                                         </div>
                                     </div>
                                 );

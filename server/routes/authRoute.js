@@ -26,6 +26,8 @@ const {
     getAllOrder,
     getOrderByUserId,
     updateOrderStatus,
+    removeProductFromCart,
+    updateProductQuantityFromCart,
 } = require('../controllers/userCtrl');
 const { authMiddleware, isAdmin } = require('../middlewares/authMiddleware');
 
@@ -43,7 +45,15 @@ router.post('/cart', authMiddleware, userCart);
 router.get('/cart', authMiddleware, getUserCart);
 
 // delete user cart
+router.delete('/delete-product-cart/:cartItemId', authMiddleware, removeProductFromCart);
 router.delete('/empty-cart', authMiddleware, emptyCart);
+
+// update quantity
+router.delete(
+    '/update-product-cart/:cartItemId/:newQuantity',
+    authMiddleware,
+    updateProductQuantityFromCart,
+);
 
 // apply coupon
 router.post('/cart/apply-coupon', authMiddleware, applyCoupon);
